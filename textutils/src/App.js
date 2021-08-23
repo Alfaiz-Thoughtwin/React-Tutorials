@@ -1,24 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 
+let name = "Alfaiz";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React with Alfaiz
-        </a>
-      </header>
+    <>
+    <nav>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+    </nav>
+    <h1>Hello {name}</h1>
+    <div className="container">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, optio, illo at officia suscipit ullam exercitationem nobis ipsa rerum incidunt dolorem nemo possimus libero cum atque molestiae aperiam provident qui repellendus sunt dignissimos corruption.
     </div>
+    </>
   );
 }
 
