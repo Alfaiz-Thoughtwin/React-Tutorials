@@ -21,7 +21,7 @@ export default function About() {
                 backgroundColor: 'black',
                 border: '1px solid white'
             });
-            setBtnText("Enable Light Mode")
+            setBtnText("Disable Dark Mode")
         }
     };
 
@@ -67,7 +67,10 @@ export default function About() {
                     </div>
                 </div>
                 <div className="container my-3">
-                    <button onClick={toggleStyle} className="btn btn-primary">{btnText}</button>
+                    <div class="form-check form-switch">
+                        <input onClick={toggleStyle} className="form-check-input" type="checkbox" id="btnDark" name="btnDark"/>
+                        <label className="form-check-label" htmlFor="btnDark">{btnText}</label>
+                    </div>
                 </div>
             </div>  
     );
