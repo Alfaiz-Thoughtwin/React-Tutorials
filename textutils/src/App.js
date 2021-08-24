@@ -8,7 +8,7 @@ function App() {
   return (
     <>
     <Navbar title="TextUtils"/>
-    <TextForm heading="Enter Text For Analyzing" />
+    <TextForm heading="Enter Text For Analyzing :" />
     </>
   );
 }
