@@ -10,26 +10,35 @@ export default function TextForm(props) {
     const handleUnClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("UpperCase Converted Successfully", "success");
     };
 
     const handleLoClick = () => {
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("LowerCase Converted Successfully", "success");
     };
 
     const handleClearClick = () => {
         let newText = "";
         setText(newText);
+        props.showAlert("Text Cleared", "warning");
     };
 
     const handleWhiteSpClick = () => {
         let newText = text.replace(/\s+/g, '');
         setText(newText);
+        props.showAlert("White Spaces Removes", "success");
     };
 
     const handleExtraSpClick = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+    };
+
+    const handlePuncClick = () => {
+        let newText = text.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g,"");
+        setText(newText);
     };
 
     const handleTitleClick =() => {
@@ -46,13 +55,14 @@ export default function TextForm(props) {
             <h1>{props.heading}</h1>
             <div className="mb-4">
                 <label htmlFor="myBox" className="form-label"></label>
-                <textarea className="form-control" style={{backgroundColor: props.mode === 'dark'?'#042743':'white',color: props.mode === 'dark'?'white':'#042743'}} value={text} onChange={handleOnChange} id="myBox" name="myBox" rows="8"></textarea>
+                <textarea className="form-control" style={{backgroundColor: props.mode === 'dark'?'#5D6D7E ':'white',color: props.mode === 'dark'?'white':'#042743'}} value={text} onChange={handleOnChange} id="myBox" name="myBox" rows="8"></textarea>
                 <button className={`btn btn-${props.mode === 'dark'?'danger':'primary'} mt-3 mx-1`} onClick={handleClearClick}>Clear Text</button>
                 <button className={`btn btn-${props.mode === 'dark'?'danger':'primary'} mt-3 mx-1`} onClick={handleUnClick}>Convert To UpperCase</button>
                 <button className={`btn btn-${props.mode === 'dark'?'danger':'primary'} mt-3 mx-1`} onClick={handleLoClick}>Convert To LowerCase</button>
                 <button className={`btn btn-${props.mode === 'dark'?'danger':'primary'} mt-3 mx-1`} onClick={handleTitleClick}>Convert To TitleCase</button>
                 <button className={`btn btn-${props.mode === 'dark'?'danger':'primary'} mt-3 mx-1`} onClick={handleWhiteSpClick}>Remove Whitespaces</button>
                 <button className={`btn btn-${props.mode === 'dark'?'danger':'primary'} mt-3 mx-1`} onClick={handleExtraSpClick}>Remove Extraspaces</button>
+                <button className={`btn btn-${props.mode === 'dark'?'danger':'primary'} mt-3 mx-1`} onClick={handlePuncClick}>Remove Punctuations</button>
                 <button className={`btn btn-${props.mode === 'dark'?'danger':'primary'} mt-3 mx-1`} onClick={()=> navigator.clipboard.writeText(text)}>Copy Text</button>
             </div>
         </div><hr/>
@@ -65,11 +75,11 @@ export default function TextForm(props) {
             </div>
             <div className="col-md-6 border">
                 <h2>Preview :</h2>
-                <p className="lead">
-                    <pre>
+                <pre>
+                    <p className="lead">
                         {text.length>0?text:"Enter something in the textbox above to preview it here."}
-                    </pre>
-                </p>
+                    </p>
+                </pre>
             </div>
             </div>
         </div>
